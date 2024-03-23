@@ -1,7 +1,6 @@
 package env_vars
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -15,8 +14,6 @@ type EnvVariablesType struct {
 var EnvVariables EnvVariablesType
 
 func init() {
-	fmt.Println("running env_vars INIT")
-
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
