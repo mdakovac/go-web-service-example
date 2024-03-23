@@ -7,15 +7,15 @@ import (
 	"router"
 )
 
-func SetupAlbumController(r router.Router, service album_models.AlbumServiceType){
+func SetupAlbumController(r router.Router, service album_models.AlbumServiceType) {
 	albumRoutes := r.Group("/album")
-    {
-        albumRoutes.GET("/by-artist", func(c router.Context) {
+	{
+		albumRoutes.GET("/by-artist", func(c router.Context) {
 			name := c.Param("name")
 			albums, _ := service.FindByArtist(name)
-			
-            c.JSON(200, albums)
-        })
+
+			c.JSON(200, albums)
+		})
 
 		albumRoutes.POST("/", func(c router.Context) {
 			var newAlbum album_models.Album
@@ -26,11 +26,11 @@ func SetupAlbumController(r router.Router, service album_models.AlbumServiceType
 			// newAlbum.
 			if err := c.BindJSON(&newAlbum); err != nil {
 				c.JSON(http.StatusBadRequest, err.Error())
-				return 
-			}	
+				return
+			}
 
 			id, _ := service.Add(newAlbum)
-            c.JSON(200, id)
-        })
-    }
+			c.JSON(200, id)
+		})
+	}
 }

@@ -10,10 +10,10 @@ import (
 )
 
 type Album struct {
-    ID     int64
-    Title  string
-    Artist string
-    Price  float32
+	ID     int64
+	Title  string
+	Artist string
+	Price  float32
 }
 
 func main() {
@@ -26,6 +26,5 @@ func main() {
 	albumService := album_service.NewAlbumService(albumRepository)
 	album_controller.SetupAlbumController(router, albumService)
 
-	
-    router.Run("localhost:8080")
+	router.Run("localhost:8080")
 }

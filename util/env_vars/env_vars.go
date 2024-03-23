@@ -14,10 +14,10 @@ type EnvVariablesType struct {
 
 var EnvVariables EnvVariablesType
 
-func init(){
+func init() {
 	fmt.Println("running env_vars INIT")
 
-  	err := godotenv.Load()
+	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
 	}

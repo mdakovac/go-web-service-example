@@ -6,8 +6,7 @@ type Router = *gin.Engine
 
 type Context = *gin.Context
 
-func NewRouter() Router{
-    router := gin.Default()
-
+func NewRouter() Router {
+	router := gin.Default()
 	return router
 }

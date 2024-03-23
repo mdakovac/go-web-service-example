@@ -8,12 +8,12 @@ import (
 	"util/env_vars"
 )
 
-func main(){
+func main() {
 	conn := db.Connect(env_vars.EnvVariables.DATABASE_URL)
 	defer db.Disconnect(conn)
 
 	// Execute the SQL setup script
-    _, err := conn.Exec(context.Background(), `
+	_, err := conn.Exec(context.Background(), `
         DROP TABLE IF EXISTS album;
         CREATE TABLE album (
           id         SERIAL PRIMARY KEY,
@@ -30,9 +30,9 @@ func main(){
           ('Jeru', 'Gerry Mulligan', 17.99),
           ('Sarah Vaughan', 'Sarah Vaughan', 34.98);
     `)
-    if err != nil {
-        log.Fatal(err)
-    }
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    fmt.Println("SQL setup script executed successfully")
+	fmt.Println("SQL setup script executed successfully")
 }
